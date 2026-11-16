@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: anu-hospital
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    plan: free
+    rootDir: backend
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.8
+      - key: HOSPITAL_DOMAIN
+        value: anuhospital.com
+services:
+  - type: web
+    name: anu-hospital
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    plan: free
+    rootDir: fastapi   # <-- Change this to the folder containing main.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.8
+      - key: HOSPITAL_DOMAIN
+        value: anuhospital.com
